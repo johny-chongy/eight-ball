@@ -22,7 +22,7 @@ const EXAMPLE_ANSWERS = [
   { msg: "My sources say no.", color: "red" },
   { msg: "Outlook not so good.", color: "red" },
   { msg: "Very doubtful.", color: "red" },
-]
+];
 
 
 /** Eightball renders component for magic eight ball
@@ -50,7 +50,6 @@ function Eightball({answers=EXAMPLE_ANSWERS}) {
     justifyContent:"center",
     alignItems:"center"
   };
-
 
   function handleClick(evt) {
     setAns(randomAns(answers));
