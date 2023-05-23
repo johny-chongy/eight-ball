@@ -1,8 +1,10 @@
-import logo from './logo.svg';
+import Eightball from './EightBall';
 import './App.css';
 
 function App() {
-  return ();
+  return (
+    <Eightball />
+  );
 }
 
 export default App;
