@@ -1,6 +1,8 @@
 import { useState } from "react";
 import randomAns from "./randomAns";
+import "./EightBall.css"
 
+const DEFAULT_ANSWER = { msg: "Think of a Question", color: "black" };
 const EXAMPLE_ANSWERS = [
   { msg: "It is certain.", color: "green" },
   { msg: "It is decidedly so.", color: "green" },
@@ -22,7 +24,7 @@ const EXAMPLE_ANSWERS = [
   { msg: "My sources say no.", color: "red" },
   { msg: "Outlook not so good.", color: "red" },
   { msg: "Very doubtful.", color: "red" },
-]
+];
 
 
 /** Eightball renders component for magic eight ball
@@ -35,33 +37,36 @@ const EXAMPLE_ANSWERS = [
  *
  *  App -> Eightball
  */
-function Eightball({answers=EXAMPLE_ANSWERS}) {
-  const [ans, setAns] = useState({msg: "Think of a Question", color: "black"});
+function Eightball({ answers = EXAMPLE_ANSWERS }) {
+  const [answer, setAnswer] = useState(DEFAULT_ANSWER); //TODO: ans -> answer
 
-  const divStyle = {
-    backgroundColor: ans.color,
-    borderRadius: "50%",
-    marginLeft: "auto",
-    marginRight:"auto",
-    color:"white",
-    width:"200px",
-    height:"200px",
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center"
+  const divStyle = { //TODO: move non-dynamic to css
+    backgroundColor: answer.color,
+
   };
 
-
+  // handle click
   function handleClick(evt) {
-    setAns(randomAns(answers));
+    setAnswer(randomAns(answers));
+  }
+
+  //handle reset
+  function reset(evt) {
+    setAnswer(DEFAULT_ANSWER);
   }
 
   return (
-    <div className="eightball" onClick={handleClick} style={divStyle}>
-      <p>{ans.msg}</p>
+    <div>
+      <div className="Eightball" onClick={handleClick} style={divStyle}>
+        <p>{answer.msg}</p>
+      </div>
+      <button onClick={reset}>
+        Reset
+      </button>
     </div>
 
-  )
+
+  );
 }
 
 export default Eightball;
